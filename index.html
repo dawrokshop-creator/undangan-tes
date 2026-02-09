@@ -8,10 +8,9 @@
 <style>
 body{
   margin:0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:Segoe UI, sans-serif;
   text-align:center;
   background:#f8f3ef;
-  overflow-x:hidden;
 }
 
 .cover{
@@ -25,13 +24,12 @@ body{
 }
 
 button{
-  padding:12px 28px;
+  padding:14px 30px;
   font-size:18px;
   border:none;
   border-radius:8px;
   background:white;
   color:#b76e79;
-  margin-top:20px;
 }
 
 .section{
@@ -39,41 +37,37 @@ button{
 }
 
 h1{
-  font-size:42px;
+  font-size:40px;
   color:#b76e79;
-  margin-bottom:10px;
-}
-
-.countdown{
-  font-size:22px;
-  margin-top:15px;
 }
 
 .maps a{
   display:inline-block;
-  margin-top:25px;
+  margin-top:20px;
   padding:12px 25px;
   background:#b76e79;
   color:white;
   border-radius:8px;
   text-decoration:none;
 }
+
+.countdown{
+  font-size:22px;
+  margin-top:15px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- COVER -->
 <div class="cover">
   <h2>Undangan Pernikahan</h2>
   <button id="buka">Buka Undangan</button>
 </div>
 
-<!-- ISI -->
 <div class="section">
   <h1>Rina & Da</h1>
-  <p>Akan melangsungkan pernikahan pada</p>
-  <p><b>Minggu, 10 Maret 2026</b></p>
+  <p>Minggu, 10 Maret 2026</p>
 
   <div class="countdown" id="countdown"></div>
 
@@ -82,19 +76,23 @@ h1{
   </div>
 </div>
 
-<!-- MUSIK ONLINE JERNIH -->
-<audio id="musik" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b4c8a.mp3?filename=wedding-piano-110624.mp3" type="audio/mpeg">
+<!-- AUDIO -->
+<audio id="musik" loop preload="auto">
+  <source src="musik.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Tombol buka + musik
-document.getElementById("buka").addEventListener("click", function(){
-  document.getElementById("musik").play();
+var audio = document.getElementById("musik");
+var tombol = document.getElementById("buka");
+
+tombol.addEventListener("click", function () {
+  audio.currentTime = 0;
+  audio.muted = false;
+  audio.play();
   window.scrollTo({top:window.innerHeight, behavior:'smooth'});
 });
 
-// Countdown
+// COUNTDOWN
 const target = new Date("March 10, 2026 09:00:00").getTime();
 setInterval(()=>{
   const now = new Date().getTime();
