@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan</title>
+<style>
+body{margin:0;font-family:sans-serif;text-align:center;background:#f8f3ef;}
+.cover{height:100vh;background:#b76e79;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+button{padding:12px 25px;font-size:18px;border:none;border-radius:8px;background:white;color:#b76e79;}
+.section{padding:60px 20px;}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h2>Undangan Pernikahan</h2>
+  <button onclick="buka()">Buka Undangan</button>
+</div>
+
+<div class="section">
+  <h1>Rina & Da</h1>
+  <p>Minggu, 10 Maret 2026</p>
+</div>
+
+<script>
+function buka(){
+  window.scrollTo({top:window.innerHeight, behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
