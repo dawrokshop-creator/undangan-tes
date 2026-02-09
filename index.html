@@ -1,39 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan</title>
+<title>Undangan Pernikahan</title>
+
 <style>
-body{margin:0;font-family:sans-serif;text-align:center;background:#f8f3ef;}
-.cover{height:100vh;background:#b76e79;color:white;display:flex;flex-direction:column;justify-content:center;align-items:center;}
-button{padding:12px 25px;font-size:18px;border:none;border-radius:8px;background:white;color:#b76e79;}
-.section{padding:60px 20px;}
+body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align:center;
+  background:#f8f3ef;
+  overflow-x:hidden;
+}
+
+.cover{
+  height:100vh;
+  background:#b76e79;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+button{
+  padding:12px 28px;
+  font-size:18px;
+  border:none;
+  border-radius:8px;
+  background:white;
+  color:#b76e79;
+  margin-top:20px;
+}
+
+.section{
+  padding:60px 20px;
+}
+
+h1{
+  font-size:42px;
+  color:#b76e79;
+  margin-bottom:10px;
+}
+
+.countdown{
+  font-size:22px;
+  margin-top:15px;
+}
+
+.maps a{
+  display:inline-block;
+  margin-top:25px;
+  padding:12px 25px;
+  background:#b76e79;
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+}
 </style>
 </head>
+
 <body>
 
+<!-- COVER -->
 <div class="cover">
   <h2>Undangan Pernikahan</h2>
-  <button onclick="buka()">Buka Undangan</button>
+  <button id="buka">Buka Undangan</button>
 </div>
 
+<!-- ISI -->
 <div class="section">
   <h1>Rina & Da</h1>
-  <p>Minggu, 10 Maret 2026</p>
+  <p>Akan melangsungkan pernikahan pada</p>
+  <p><b>Minggu, 10 Maret 2026</b></p>
+
+  <div class="countdown" id="countdown"></div>
+
+  <div class="maps">
+    <a href="https://maps.google.com" target="_blank">Lihat Lokasi Acara</a>
+  </div>
 </div>
 
-<!-- MUSIK -->
+<!-- MUSIK ONLINE JERNIH -->
 <audio id="musik" loop>
-  <source src="musik.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b4c8a.mp3?filename=wedding-piano-110624.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function buka(){
-  const audio = document.getElementById("musik");
-  audio.play();
+// Tombol buka + musik
+document.getElementById("buka").addEventListener("click", function(){
+  document.getElementById("musik").play();
   window.scrollTo({top:window.innerHeight, behavior:'smooth'});
-}
+});
+
+// Countdown
+const target = new Date("March 10, 2026 09:00:00").getTime();
+setInterval(()=>{
+  const now = new Date().getTime();
+  const sisa = target - now;
+
+  const hari = Math.floor(sisa/(1000*60*60*24));
+  const jam  = Math.floor((sisa/(1000*60*60))%24);
+  const menit= Math.floor((sisa/(1000*60))%60);
+
+  document.getElementById("countdown").innerText =
+    hari+" Hari "+jam+" Jam "+menit+" Menit menuju hari bahagia";
+},1000);
 </script>
 
 </body>
