@@ -23,8 +23,15 @@ button{padding:12px 25px;font-size:18px;border:none;border-radius:8px;background
   <p>Minggu, 10 Maret 2026</p>
 </div>
 
+<!-- MUSIK -->
+<audio id="musik" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 function buka(){
+  const audio = document.getElementById("musik");
+  audio.play();
   window.scrollTo({top:window.innerHeight, behavior:'smooth'});
 }
 </script>
